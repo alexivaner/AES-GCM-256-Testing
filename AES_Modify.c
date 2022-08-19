@@ -170,8 +170,8 @@ int main(int argc, char **argv)
 	unsigned char *encrypted_frame =
 		(unsigned char *)malloc(1048576 * sizeof(unsigned char));
 
-	uint8_t iv[12] = {74, 70, 114, 97, 109, 101,
-					  69, 110, 99, 114, 121, 112};
+	uint8_t iv[12] = [74, 70, 114, 97, 109, 101,
+					  69, 110, 99, 114, 121, 112];
 
 	unsigned char plaintext[frame.size() - unencrypted_bytes];
 
