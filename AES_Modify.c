@@ -173,7 +173,7 @@ int main(int argc, char **argv)
 
 	unsigned char plaintext[frame.size() - unencrypted_bytes];
 
-	uint8_t frame_header[];
+	uint8_t frame_header[] = "";
 	for (size_t i = 0; i < unencrypted_bytes; i++)
 	{
 		encrypted_frame[i] = frame[i];
