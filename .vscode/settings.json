@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.js": "javascript",
+        "iosfwd": "cpp",
+        "vector": "cpp",
+        "iterator": "c"
+    }
+}
