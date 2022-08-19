@@ -149,8 +149,9 @@ int main(int argc, char **argv)
 					  69, 110, 99, 114, 121, 112};
 	int k;
 
-	printf("Enter key: ");
-	scanf("%s", key);
+	key = {97, 145, 133, 203, 63, 197, 49, 232, 87, 159, 169,
+		   200, 59, 195, 77, 75, 150, 173, 189, 232, 44, 39,
+		   8, 149, 250, 6, 238, 170, 255, 17, 110, 107}
 
 	/* generate encryption key from user entered key */
 	// if (!PKCS5_PBKDF2_HMAC_SHA1(key, strlen(key), NULL, 0, 1000, 32, key))
@@ -160,8 +161,12 @@ int main(int argc, char **argv)
 	// }
 
 	/* get plaintext input */
-	printf("Enter plaintext: ");
-	scanf("%s", frame);
+	// Create a vector of size n with
+	// all values as 0.
+	// Create an array of string objects
+	uint8_t arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32};
+	// Initialize vector with a string array
+	std::vector<uint8_t> vecOfStr(arr, arr + sizeof(arr) / sizeof(std::string));
 
 	/* generate random IV */
 	// while (!RAND_bytes(iv, sizeof(iv)))
