@@ -8,6 +8,7 @@
 #include <string.h>
 #include <openssl/rand.h>
 #include <openssl/evp.h>
+#include <vector>
 
 void handleErrors()
 {
@@ -171,9 +172,9 @@ int main(int argc, char **argv)
 	unsigned char *encrypted_frame =
 		(unsigned char *)malloc(1048576 * sizeof(unsigned char));
 
-	unsigned char plaintext[frame.size() - unencrypted_bytes];
+	unsigned char plaintext[sizeof(frame) / sizeof(frame[0]) - unencrypted_bytes];
 
-	uint8_t frame_header[] = "";
+	std::vector<uint8_t> frame_header;
 	for (size_t i = 0; i < unencrypted_bytes; i++)
 	{
 		encrypted_frame[i] = frame[i];
