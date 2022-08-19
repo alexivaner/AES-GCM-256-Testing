@@ -171,18 +171,17 @@ int main(int argc, char **argv)
 	unsigned char *encrypted_frame =
 		(unsigned char *)malloc(1048576 * sizeof(unsigned char));
 
-	vector<uint8_t> iv = {74, 70, 114, 97, 109, 101,
-						  69, 110, 99, 114, 121, 112};
+	uint8_t iv[12] = {74, 70, 114, 97, 109, 101,
+					  69, 110, 99, 114, 121, 112};
 
 	unsigned char plaintext[frame.size() - unencrypted_bytes];
 
-	vector<uint8_t> frame_header;
+	uint8_t frame_header[];
 	for (size_t i = 0; i < unencrypted_bytes; i++)
 	{
 		encrypted_frame[i] = frame[i];
 		frame_header.push_back(encrypted_frame[i]);
 	}
-
 
 	/* encrypt the text and print on STDOUT */
 	unsigned char *ciphertext =
@@ -191,7 +190,6 @@ int main(int argc, char **argv)
 
 	// k = encrypt(plaintext, strlen(plaintext), aad, sizeof(aad), key, iv, ciphertext, tag);
 	printf("Chipertext is %s\n", ciphertext);
-	
 
 	// /* decrypt the text and print on STDOUT */
 	// k = decrypt(ciphertext, k, aad, sizeof(aad), tag, key, iv, pt);
