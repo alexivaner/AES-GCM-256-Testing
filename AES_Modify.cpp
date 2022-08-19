@@ -143,21 +143,21 @@ int decrypt(unsigned char *key,
 
 int main(int argc, char **argv)
 {
-	unsigned char frame[1024], key[32], ciphertext[1024 + EVP_MAX_BLOCK_LENGTH], tag[100], pt[1024 + EVP_MAX_BLOCK_LENGTH];
+	unsigned char key[32], tag[100], pt[1024 + EVP_MAX_BLOCK_LENGTH];
+	std::vector<uint8_t> frame;
 	uint8_t iv[12] = {74, 70, 114, 97, 109, 101,
 					  69, 110, 99, 114, 121, 112};
-	unsigned char aad[16] = "abcdefghijklmnop"; // dummy
 	int k;
 
 	printf("Enter key: ");
 	scanf("%s", key);
 
 	/* generate encryption key from user entered key */
-	if (!PKCS5_PBKDF2_HMAC_SHA1(key, strlen(key), NULL, 0, 1000, 32, key))
-	{
-		printf("Error in key generation\n");
-		exit(1);
-	}
+	// if (!PKCS5_PBKDF2_HMAC_SHA1(key, strlen(key), NULL, 0, 1000, 32, key))
+	// {
+	// 	printf("Error in key generation\n");
+	// 	exit(1);
+	// }
 
 	/* get plaintext input */
 	printf("Enter plaintext: ");
@@ -180,6 +180,8 @@ int main(int argc, char **argv)
 		encrypted_frame[i] = frame[i];
 		frame_header.push_back(encrypted_frame[i]);
 	}
+
+	size_t ciphertext_len;
 
 	/* encrypt the text and print on STDOUT */
 	unsigned char *ciphertext =
