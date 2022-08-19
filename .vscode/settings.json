@@ -3,6 +3,8 @@
         "*.js": "javascript",
         "iosfwd": "cpp",
         "vector": "cpp",
-        "iterator": "c"
+        "iterator": "c",
+        "__split_buffer": "c",
+        "string": "c"
     }
 }
