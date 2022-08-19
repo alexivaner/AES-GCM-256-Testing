@@ -143,7 +143,8 @@ int decrypt(unsigned char *key,
 int main(int argc, char **argv)
 {
 	unsigned char frame[1024], key[32], ciphertext[1024 + EVP_MAX_BLOCK_LENGTH], tag[100], pt[1024 + EVP_MAX_BLOCK_LENGTH];
-	unsigned char iv[16];
+	uint8_t iv[12] = {74, 70, 114, 97, 109, 101,
+					  69, 110, 99, 114, 121, 112};
 	unsigned char aad[16] = "abcdefghijklmnop"; // dummy
 	int k;
 
@@ -169,9 +170,6 @@ int main(int argc, char **argv)
 
 	unsigned char *encrypted_frame =
 		(unsigned char *)malloc(1048576 * sizeof(unsigned char));
-
-	uint8_t iv[12] = [74, 70, 114, 97, 109, 101,
-					  69, 110, 99, 114, 121, 112];
 
 	unsigned char plaintext[frame.size() - unencrypted_bytes];
 
