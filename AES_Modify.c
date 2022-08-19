@@ -8,7 +8,6 @@
 #include <string.h>
 #include <openssl/rand.h>
 #include <openssl/evp.h>
-#include <vector>
 
 void handleErrors()
 {
