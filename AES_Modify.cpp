@@ -143,15 +143,15 @@ int decrypt(unsigned char *key,
 
 int main(int argc, char **argv)
 {
-	unsigned char key[32], tag[100], pt[1024 + EVP_MAX_BLOCK_LENGTH];
+	unsigned char tag[100], pt[1024 + EVP_MAX_BLOCK_LENGTH];
 	std::vector<uint8_t> frame;
 	uint8_t iv[12] = {74, 70, 114, 97, 109, 101,
 					  69, 110, 99, 114, 121, 112};
 	int k;
 
-	key = {97, 145, 133, 203, 63, 197, 49, 232, 87, 159, 169,
-		   200, 59, 195, 77, 75, 150, 173, 189, 232, 44, 39,
-		   8, 149, 250, 6, 238, 170, 255, 17, 110, 107};
+	unsigned<uint8_t> key = {97, 145, 133, 203, 63, 197, 49, 232, 87, 159, 169,
+							 200, 59, 195, 77, 75, 150, 173, 189, 232, 44, 39,
+							 8, 149, 250, 6, 238, 170, 255, 17, 110, 107};
 
 	/* generate encryption key from user entered key */
 	// if (!PKCS5_PBKDF2_HMAC_SHA1(key, strlen(key), NULL, 0, 1000, 32, key))
